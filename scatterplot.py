@@ -7,6 +7,10 @@ from collections import OrderedDict
 
 def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model1_lvl,model2_lvl,obs_lvl,outdir,period,no,dummy1,dummy2,filtervar1,filtervar2,filter1,filter2,filterby,no_filters):
 
+	plt.close('all')
+	plt.clf()
+
+
 	if outdir[-1] != '/':
 		outdir = outdir + '/'
 
@@ -45,6 +49,7 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 
 #	models1 = []
 	for n in range(dummy1, len(names1)):
+		'''
 		if no_filters == 1:
 			if filterby == 'obs':
 				if period == 1:
@@ -95,95 +100,124 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 						else:
 							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='green')
 		else:
-			if filterby == 'obs':
-				if period == 1:
-					if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=6,marker='*',color='red')
-					elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=12,marker='*',color='red')
-					elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=6,marker='o',color='red')
-					else:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=12,marker='o',color='red')
-				elif period == 2:
-					if data1[n].time.dt.hour[0] == 0:
-						if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='red',label=model1+' - 00 run - Clear and calm')
-						elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='v',color='red',label=model1+' - 00 run - Clear and windy')
-						elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='^',color='black',label=model1+' - 00 run - Cloudy and calm')
-						else:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='black',label=model1+' - 00 run - Cloudy and windy')
-				elif period == 3:
-					if data1[n].time.dt.hour[0] == 12:
-						if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='black',label=model1+' 12 - Clear and calm')
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='red',label=model1+' - 12 run - Clear and calm')
-						elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
-#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='v',color='black',label=model1+' 12 - Clear and windy')
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='v',color='red',label=model1+' - 12 run - Clear and windy')
-						elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='^',color='black',label=model1+' 12 - Cloudy and calm')
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='^',color='black',label=model1+' - 12 run - Cloudy and calm')
-						else:
-#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='black',label=model1+' 12 - Cloudy and windy')
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='black',label=model1+' - 12 run - Cloudy and windy')
-				elif period == 4:
-					if n < len(names1)-1:
-						if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='red')
-						elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='red')
-						elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='green')
-						else:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='green')
+		'''
+#			if filterby == 'obs':
+		if period == 1:
+			if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+				plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=6,marker='*',color='red')
+			elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
+				plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=12,marker='*',color='red')
+			elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+				plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=6,marker='o',color='red')
 			else:
-				if period == 1:
-					if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
-					elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=8,marker='o',color='red')
-					elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
+				plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=12,marker='o',color='red')
+		elif period == 2:
+#			if n % 2 == 0:
+			if data1[n].time.dt.hour[0] == 0:
+				if obs1[(n-dummy1)*12].time.dt.hour.values == 0:
+#					print obs1[(n-dummy1)*12].time.values
+#					print plotvar1[n][0].time.values
+					if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='red',label='Clear and calm') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+					elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='red',label='Clear and windy') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+					elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='black',label='Cloudy and calm') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
 					else:
-						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=8,marker='o',color='green')
-				elif period == 2:
-					if n % 2 == 0:
-						if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
-						elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='red')
-						elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
-						else:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='green')
-				elif period == 3:
-					if n % 2 == 1:
-						if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
-						elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='red')
-						elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
-						else:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='green')
-				elif period == 4:
-					if n < len(names1)-1:
-						if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='red')
-						elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='red')
-						elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='green')
-						else:
-							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='green')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='black',label='Cloudy and windy') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+				else:
+					if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='o',color='red',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+					elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='s',color='red',label='no_label') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+					elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='o',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
+					else:
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='s',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+		elif period == 3:
+			if data1[n].time.dt.hour[0] == 12:
+				if obs1[(n-dummy1)*12].time.dt.hour.values == 12:
+#					print obs1[(n-dummy1)*12].time.values
+#					print plotvar1[n][0].time.values
+					if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='black',label=model1+' 12 - Clear and calm')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='red',label='Clear and calm') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+					elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='v',color='black',label=model1+' 12 - Clear and windy')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='red',label='Clear and windy') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+					elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='^',color='black',label=model1+' 12 - Cloudy and calm')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='black',label='Cloudy and calm') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
+					else:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='black',label=model1+' 12 - Cloudy and windy')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='black',label='Cloudy and windy') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+				else:
+#					print obs1[(n-dummy1)*12+12].time.values
+#					print plotvar1[n][0].time.values
+					if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='o',color='black',label=model1+' 12 - Clear and calm')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='o',color='red',label='Clear and calm') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+					elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='v',color='black',label=model1+' 12 - Clear and windy')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='s',color='red',label='Clear and windy') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+					elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='^',color='black',label=model1+' 12 - Cloudy and calm')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='o',color='black',label='Cloudy and calm') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
+					else:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=16,marker='s',color='black',label=model1+' 12 - Cloudy and windy')
+						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=16,marker='s',color='black',label='Cloudy and windy') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+		elif period == 4:
+			if n < len(names1)-1:
+				if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+					plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='red')
+				elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+					plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='red')
+				elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+					plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='green')
+				else:
+					plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='green')
 
-#	if period == 1 or period == 2 or period == 3 or period == 4:
-#		handles, labels = plt.gca().get_legend_handles_labels()
-#		by_label = OrderedDict(zip(labels, handles))
-#		legend1 = plt.legend(by_label.values(), by_label.keys(),loc=2)
+#			else:
+#				if period == 1:
+#					if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
+#					elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=8,marker='o',color='red')
+#					elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
+#					else:
+#						plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=8,marker='o',color='green')
+#				elif period == 2:
+#					if n % 2 == 0:
+#						if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
+#						elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='red')
+#						elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
+#						else:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='green')
+#				elif period == 3:
+#					if n % 2 == 1:
+#						if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
+#						elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='red')
+#						elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
+#						else:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='*',color='green')
+#				elif period == 4:
+#					if n < len(names1)-1:
+#						if data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='red')
+#						elif data1[n][filtervar1][0,0,0] < filter1 and data1[n][filtervar2][0,0,0] > filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='red')
+#						elif data1[n][filtervar1][0,0,0] > filter1 and data1[n][filtervar2][0,0,0] < filter2:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=4,marker='o',color='green')
+#						else:
+#							plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12+12],s=8,marker='o',color='green')
+
 	if no == 2:
 #		models2 = []
 		for n in range(dummy2, len(names2)):
@@ -248,7 +282,7 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 						else:
 							plt.scatter(plotvar2[n][0],obs1[(n-dummy2)*12],s=8,marker='*',color='green')
 					elif period == 2:
-						if n % 2 == 0:
+						if data1[n].time.dt.hour[0] == 00:
 							if obs[filtervar1][(n-dummy2)*12] < filter1 and obs[filtervar2][(n-dummy2)*12] < filter2:
 								plt.scatter(plotvar2[n][0],obs1[(n-dummy2)*12],s=6,marker='^',color='green',label=model2+' 2')
 							elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
@@ -258,7 +292,7 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 							else:
 								plt.scatter(plotvar2[n][0],obs1[(n-dummy2)*12],s=20,marker='<',color='green',label=model2+' 0')
 					elif period == 3:
-						if n % 2 == 1:
+						if data1[n].time.dt.hour == 12:
 							if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
 								plt.scatter(plotvar1[n][0],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
 							elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
@@ -337,7 +371,7 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 
 		handles, labels = plt.gca().get_legend_handles_labels()
 		by_label = OrderedDict(zip(labels, handles))
-		plt.legend(by_label.values(), by_label.keys(),fontsize=6)
+		plt.legend(by_label.values(), by_label.keys()) #,loc='center left', bbox_to_anchor=(0.99,0.5),fontsize=6) #fontsize=6)
 #		if no == 2:
 #			handles, labels = plt.gca().get_legend_handles_labels(models2)
 #			by_label = OrderedDict(zip(labels, handles))
@@ -346,11 +380,11 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 #		plt.gca().add_artist(legend1)
 		plt.xlabel(r'Model data ['+data1[dummy1][var1].units+']')
 		plt.ylabel('Observations ['+data1[dummy1][var1].units+']')
-		plt.title('Initial '+data1[dummy1][var1].long_name.lower()+' filtered by clouds and wind')
+#		plt.title('Initial '+data1[dummy1][var1].long_name.lower()+' filtered by clouds and wind')
 		if no == 2:
 			plt.savefig(outdir+'scatter_first_'+model1.lower()+'_'+model2.lower()+'_'+var1+'_'+str(period)+'.pdf')
 		else:
-			plt.savefig(outdir+'scatter_first_'+model1.lower()+'_'+var1+'_'+str(period)+'.pdf')
+			plt.savefig(outdir+'scatter_first_'+model1.lower()+'_'+var1+'_'+str(period)+'.pdf', bbox_inches = 'tight', pad_inches = 0)
 
 		plt.clf()
 
@@ -366,25 +400,88 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 				plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=8,marker='o',color='green')
 
 		elif period == 2:
-			if n % 2 == 0:
-				if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
-				elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=8,marker='o',color='red')
-				elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
+			if data1[n].time.dt.hour[0] == 00:
+				if obs1[(n-dummy1)*12].time.dt.hour.values == 0:
+					if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+						plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
+						plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+						plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='black')
+					else:
+						plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='black')
 				else:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=8,marker='o',color='green')
+					if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='o',color='red',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='s',color='red',label='no_label') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='o',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
+						except IndexError:
+							pass
+					else:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='s',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+						except IndexError:
+							pass
 		elif period == 3:
-			if n % 2 == 1:
-				if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=4,marker='o',color='red')
-				elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=8,marker='o',color='red')
-				elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=4,marker='o',color='green')
+			if data1[n].time.dt.hour[0] == 12:
+				if obs1[(n-dummy1)*12].time.dt.hour.values == 12:
+					if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+						plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
+						plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+						plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='black')
+					else:
+						try:
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='black')
+						except IndexError:
+							pass
 				else:
-					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12],s=8,marker='o',color='green')
+					if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='o',color='red',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='s',color='red',label='no_label') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='o',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
+						except IndexError:
+							pass
+					else:
+						try:
+#							print plotvar1[n][-1].time.values
+#							print obs1[(n-dummy1)*12+36].time.values
+							plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=16,marker='s',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+						except IndexError:
+							pass
 		elif period == 4:
 			if n < len(names1)-1:
 				if obs[filtervar1][(n-dummy1)*12+24] < filter1 and obs[filtervar2][(n-dummy1)*12+24] < filter2:
@@ -416,8 +513,151 @@ def plot(model1,model2,site,var1,var2,obsvar,data1,data2,obs,names1,names2,model
 
 		plt.xlabel('Model data ['+data1[dummy1][var1].units+']')
 		plt.ylabel('Observations ['+data1[dummy1][var1].units+']')
-		plt.title(data1[dummy1][var1].long_name+' filtered by clouds and wind')
-		plt.savefig(outdir+'scatter_last_'+model1+'_'+var1+'_'+str(period)+'.pdf')
+#		plt.title(data1[dummy1][var1].long_name+' filtered by clouds and wind')
+		plt.savefig(outdir+'scatter_last_'+model1.lower()+'_'+var1+'_'+str(period)+'.pdf', bbox_inches = 'tight', pad_inches = 0)
+
+		plt.clf()
+
+
+
+
+
+
+	for n in range(dummy1, len(names1)):
+#		print len(plotvar1[n])
+		if period == 1:
+			if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+				plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=4,marker='o',color='red')
+			elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+				plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=8,marker='o',color='red')
+			elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+				plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=4,marker='o',color='green')
+			else:
+				plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+12],s=8,marker='o',color='green')
+
+		elif period == 2:
+			if data1[n].time.dt.hour[0] == 00:
+				if obs1[(n-dummy1)*12].time.dt.hour.values == 0:
+					if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+#						print obs1[(n-dummy1)*12+12].time.values
+#						print plotvar1[n][len(plotvar1[n])/2-1].time.values
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+12],s=16,marker='o',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+12],s=16,marker='s',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+12],s=16,marker='o',color='black')
+					else:
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+12],s=16,marker='s',color='black')
+				else:
+					if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='red',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='red',label='no_label') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
+						except IndexError:
+							pass
+					else:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+						except IndexError:
+							pass
+		elif period == 3:
+			if data1[n].time.dt.hour[0] == 12:
+				if obs1[(n-dummy1)*12].time.dt.hour.values == 12:
+					if obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+#						print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#						print obs1[(n-dummy1)*12+12].time.values
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12-6],s=16,marker='o',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] < filter1 and obs[filtervar2][(n-dummy1)*12] > filter2:
+#						print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#						print obs1[(n-dummy1)*12+12].time.values
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12-6],s=16,marker='s',color='red')
+					elif obs[filtervar1][(n-dummy1)*12] > filter1 and obs[filtervar2][(n-dummy1)*12] < filter2:
+#						print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#						print obs1[(n-dummy1)*12+12].time.values
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12-6],s=16,marker='o',color='black')
+					else:
+#						print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#						print obs1[(n-dummy1)*12+12].time.values
+						plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12-6],s=16,marker='s',color='black')
+				else:
+					if obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='red',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and calm')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] < filter1 and obs[filtervar2][(n-dummy1)*12+12] > filter2:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='red',label='no_label') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Clear and windy')
+						except IndexError:
+							pass
+					elif obs[filtervar1][(n-dummy1)*12+12] > filter1 and obs[filtervar2][(n-dummy1)*12+12] < filter2:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='o',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and calm')
+						except IndexError:
+							pass
+					else:
+						try:
+#							print plotvar1[n][len(plotvar1[n])/2-1].time.values
+#							print obs1[(n-dummy1)*12+24].time.values
+							plt.scatter(plotvar1[n][len(plotvar1[n])/2-1],obs1[(n-dummy1)*12+24],s=16,marker='s',color='black',label='_nolabel_') #model1+' - '+str(data1[n].time.dt.hour[0].values)+' run - Cloudy and windy')
+						except IndexError:
+							pass
+		elif period == 4:
+			if n < len(names1)-1:
+				if obs[filtervar1][(n-dummy1)*12+24] < filter1 and obs[filtervar2][(n-dummy1)*12+24] < filter2:
+					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=4,marker='o',color='red')
+				elif obs[filtervar1][(n-dummy1)*12+24] < filter1 and obs[filtervar2][(n-dummy1)*12+24] > filter2:
+					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=8,marker='o',color='red')
+				elif obs[filtervar1][(n-dummy1)*12+24] > filter1 and obs[filtervar2][(n-dummy1)*12+24] < filter2:
+					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=4,marker='o',color='green')
+				else:
+					plt.scatter(plotvar1[n][-1],obs1[(n-dummy1)*12+24],s=8,marker='o',color='green')
+
+
+	if period == 1 or period == 2 or period == 3 or period == 4:
+		plt.axis('scaled')
+		plt.xlim([240,275])
+		plt.ylim([240,275])
+#		plt.plot([240,275], [240,275], ls="--", c=".3")
+		plt.plot([240+np.std(obs['Topen'][:]-obs['Tforest'][:])+(0.176-0.0028*(240-273)),275], [240,275-np.std(obs['Topen'][:]-obs['Tforest'][:])-(0.176-0.0028*(275-273))], ls="--",lw=0.8, c='orange')
+		plt.plot([240,275-np.std(obs['Topen'][:]-obs['Tforest'][:])-(0.176-0.0028*(275-273))], [240+np.std(obs['Topen'][:]-obs['Tforest'][:])+(0.176-0.0028*(240-273)),275], ls="--",lw=0.8, c='orange')
+		plt.plot([243,275], [240,272], ls="--",lw=0.3, c='red')
+		plt.plot([240,272], [243,275], ls="--",lw=0.3, c='red')
+		plt.plot([246,275], [240,269], ls="--",lw=0.3, c='red')
+		plt.plot([240,269], [246,275], ls="--",lw=0.3, c='red')
+		plt.plot([249,275], [240,266], ls="--",lw=0.3, c='red')
+		plt.plot([240,266], [249,275], ls="--",lw=0.3, c='red')
+
+#		plt.legend('red o - both')
+#		+-(0.176 - 0.0028 * temperature) C
+
+		plt.xlabel('Model data ['+data1[dummy1][var1].units+']')
+		plt.ylabel('Observations ['+data1[dummy1][var1].units+']')
+#		plt.title(data1[dummy1][var1].long_name+' filtered by clouds and wind')
+		plt.savefig(outdir+'scatter_mid_'+model1.lower()+'_'+var1+'_'+str(period)+'.pdf', bbox_inches = 'tight', pad_inches = 0)
 
 		plt.clf()
 
